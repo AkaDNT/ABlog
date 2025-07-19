@@ -7,6 +7,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class PostService {
   constructor(private readonly prisma: PrismaService) {}
   findAll() {
+    //const result = await this.prisma.$queryRaw`SELECT * FROM "Post"`;
     return this.prisma.post.findMany();
   }
   // create(createPostDto: CreatePostDto) {
