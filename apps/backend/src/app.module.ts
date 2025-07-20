@@ -10,6 +10,8 @@ import { UserModule } from './user/user.module';
 import { CommentModule } from './comment/comment.module';
 import { LikeModule } from './like/like.module';
 import { TagModule } from './tag/tag.module';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -17,12 +19,14 @@ import { TagModule } from './tag/tag.module';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/graphQL/schema.gql'),
     }),
+    ConfigModule.forRoot({ isGlobal: true }),
     PrismaModule,
     PostModule,
     UserModule,
     CommentModule,
     LikeModule,
     TagModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
